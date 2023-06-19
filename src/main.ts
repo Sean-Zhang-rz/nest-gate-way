@@ -14,7 +14,9 @@ import { TransformInterceptor } from './common/interceptors/transform.intercepto
 async function bootstrap() {
     const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
-    new FastifyAdapter(),
+    new FastifyAdapter({
+      logger: true
+    }),
   );
   // 统一响应体格式
   app.useGlobalInterceptors(new TransformInterceptor());
