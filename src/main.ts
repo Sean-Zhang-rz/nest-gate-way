@@ -22,7 +22,7 @@ async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     new FastifyAdapter(fastifyInstance),
-  );
+  );  
 
   app.register(fastifyCookie, {
     secret: 'my-secret', // for cookies signature

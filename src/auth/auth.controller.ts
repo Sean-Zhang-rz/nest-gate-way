@@ -23,7 +23,7 @@ export class AuthController {
   constructor(
     private authService: AuthService,
   ) { }
-
+    
   @ApiOperation({
     summary: '飞书 Auth2 授权登录',
     description: '通过 code 获取`access_token`https://open.feishu.cn/open-apis/authen/v1/index?app_id=cli_a4eea19b3b36d013&redirect_uri=http%3A%2F%2F127.0.0.1%3A8080%2Fauth',

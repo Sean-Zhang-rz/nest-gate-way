@@ -27,10 +27,10 @@ import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
     }), UserModule, AuthModule],
   controllers: [],
   providers: [
-    
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard,
-    },],
+    },
+  ],
 })
 export class AppModule {}

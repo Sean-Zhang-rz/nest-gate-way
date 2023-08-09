@@ -22,8 +22,6 @@ type MESSAGES_PARAMS = {
 }
 
 export const messages = async (receive_id_type: RECEIVE_TYPE, params: MESSAGES_PARAMS, app_token: string) => {
-  console.log(receive_id_type, params, app_token)
-
   try {
     const { data } = await methodV({
       url: `/im/v1/messages`,
@@ -36,7 +34,6 @@ export const messages = async (receive_id_type: RECEIVE_TYPE, params: MESSAGES_P
     });
     return data;
   } catch(err) {
-    console.log('=========');
     console.log(err);
   } 
 };

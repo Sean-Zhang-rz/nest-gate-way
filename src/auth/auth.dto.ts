@@ -5,6 +5,6 @@ export class GitlabToken {
 }
 
 export class GetTokenByApplications {
-  @ApiProperty({ example: 'iPzSxfuXv81JAU7EXr3bog' })
+  @ApiProperty({ example: 'ad3h805d6cca44e0996028d39226ed64' })
   code: string;
 }

@@ -15,8 +15,8 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
     const loginAuth = this.reflector.getAllAndOverride<boolean>(IS_PUBLIC_KEY, [
       context.getHandler(),
       context.getClass(),
-    ]);
-
+    ]);    
+    
     if (loginAuth) {
       return true;
     }
@@ -25,15 +25,17 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
   }
 
   handleRequest(err, user, info) {
-    if (err || !user) {
-      throw (
-        err ||
-        new BusinessException({
-          code: BUSINESS_ERROR_CODE.TOKEN_INVALID,
-          message: 'token 已失效',
-        })
-      );
-    }
+    console.log(err, user,'token失效了');
+    
+    // if (err || !user) {
+    //   throw (
+    //     err ||
+    //     new BusinessException({
+    //       code: BUSINESS_ERROR_CODE.TOKEN_INVALID,
+    //       message: 'token 已失效',
+    //     })
+    //   );
+    // }
     return user;
   }
 }

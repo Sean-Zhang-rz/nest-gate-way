@@ -1,7 +1,7 @@
 import { SetMetadata } from '@nestjs/common';
 
 export const jwtConstants = {
-  secret: 'yyds', // 秘钥，不对外公开。
+  secret: 'yx-yyds', // 秘钥，不对外公开。
   expiresIn: '15s', // 时效时长
   ignoreExpiration: true, // 是否忽略 token 时效
 };
