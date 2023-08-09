@@ -11,7 +11,7 @@ export type GetAppTokenRes = {
 };
 
 export const getUserToken = async ({ code, app_token }) => {
-  const { data } = await methodV({
+    const { data } = await methodV({
     url: `/authen/v1/access_token`,
     method: 'POST',
     headers: {

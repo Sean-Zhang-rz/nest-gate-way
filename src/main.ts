@@ -5,19 +5,28 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
+import fastifyCookie from '@fastify/cookie';
 
 import { AppModule } from './app.module';
 import { AllExceptionsFilter } from './common/exceptions/base.exception.filter';
 import { HttpExceptionFilter } from './common/exceptions/http.exception.filter';
 import { TransformInterceptor } from './common/interceptors/transform.interceptor';
+import fastify from 'fastify';
+import { FastifyLogger } from './common/logger';
 
 async function bootstrap() {
-    const app = await NestFactory.create<NestFastifyApplication>(
+  const fastifyInstance = fastify({
+    logger: FastifyLogger,
+  })
+
+  const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
-    new FastifyAdapter({
-      logger: true
-    }),
+    new FastifyAdapter(fastifyInstance),
   );
+
+  app.register(fastifyCookie, {
+    secret: 'my-secret', // for cookies signature
+  });
   // 统一响应体格式
   app.useGlobalInterceptors(new TransformInterceptor());
 
